@@ -1,6 +1,7 @@
 import { Application, Sprite, Texture } from "pixi.js";
 import { BaseSprite } from "./baseSprite";
 
+let score = 0;
 const WIDTH = window.innerWidth / 3;
 const HEIGHT = window.innerHeight;
 
@@ -13,14 +14,26 @@ let app = new Application({
 document.body.querySelector("#app")!.appendChild(app.view);
 
 let bird = new Sprite(Texture.from("/assets/sprites/yellowbird_01.png"));
+
 let pipe = new Sprite(Texture.from("/assets/sprites/pipe-green.png"));
+let pipe2 = new Sprite(Texture.from("/assets/sprites/pipe-green.png"));
+pipe2.scale.x = -1;
+pipe.x = WIDTH;
+pipe.y = HEIGHT - 100;
+pipe2.x = WIDTH;
+pipe.y = 100
 
 const gravity = () => {
-  bird.y += 4;
+	bird.y += 4;
+	pipe.x -= 2;
+	pipe2.x -= 2;
 };
 
 const runningLoop = () => {
-  gravity();
+	gravity();
+	if (bird.x === pipe.x) {
+		score++;
+	}
   // Gravity - Push the Bird sprite downwards
   // Move the pipes to the left, move pipe on the left once it goes out of the viewport to the right of the screen and keep cycling pipes
   // Increment score when bird goes in between pipes
