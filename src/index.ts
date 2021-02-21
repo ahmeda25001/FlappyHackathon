@@ -23,7 +23,12 @@ pipe2.scale.x = -1;
 pipe.x = WIDTH;
 pipe.y = HEIGHT - 100;
 pipe2.x = WIDTH;
-pipe.y = 100
+pipe2.y = 100
+// TODO MAKE PIPE 3 AND 4 GO A FEW SECONDS LATER
+pipe3.x = WIDTH;
+pipe3.y = HEIGHT - 100;
+pipe4.x = WIDTH;
+pipe4.y = 100
 
 const resetPipe1 = () => {
 	pipe.x = WIDTH;
